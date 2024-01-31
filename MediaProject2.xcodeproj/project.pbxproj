@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C10872B69282A005A8F95 /* TVAPIManager.swift */; };
+		A04C108E2B693171005A8F95 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108D2B693171005A8F95 /* TVModel.swift */; };
+		A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */; };
+		A04C10922B694073005A8F95 /* PosterImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C10912B694073005A8F95 /* PosterImageView.swift */; };
 		A05109BC2B68E8C000150849 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109BB2B68E8C000150849 /* AppDelegate.swift */; };
 		A05109BE2B68E8C000150849 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109BD2B68E8C000150849 /* SceneDelegate.swift */; };
 		A05109C52B68E8C300150849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A05109C42B68E8C300150849 /* Assets.xcassets */; };
@@ -18,9 +22,15 @@
 		A05109E32B68EA9700150849 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109E22B68EA9700150849 /* HomeViewController.swift */; };
 		A05109E52B68EAB000150849 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A05109E42B68EAB000150849 /* .gitignore */; };
 		A05109E72B68EB1000150849 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109E62B68EB1000150849 /* APIKey.swift */; };
+		A05109E92B68EC2000150849 /* ConfigurableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109E82B68EC1F00150849 /* ConfigurableProtocol.swift */; };
+		A05109EB2B68ED2E00150849 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05109EA2B68ED2E00150849 /* HomeTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A04C10872B69282A005A8F95 /* TVAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVAPIManager.swift; sourceTree = "<group>"; };
+		A04C108D2B693171005A8F95 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
+		A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		A04C10912B694073005A8F95 /* PosterImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageView.swift; sourceTree = "<group>"; };
 		A05109B82B68E8C000150849 /* MediaProject2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05109BB2B68E8C000150849 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A05109BD2B68E8C000150849 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,6 +40,8 @@
 		A05109E22B68EA9700150849 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A05109E42B68EAB000150849 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		A05109E62B68EB1000150849 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		A05109E82B68EC1F00150849 /* ConfigurableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableProtocol.swift; sourceTree = "<group>"; };
+		A05109EA2B68ED2E00150849 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A04C10862B69075F005A8F95 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A05109E62B68EB1000150849 /* APIKey.swift */,
+				A04C10872B69282A005A8F95 /* TVAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		A05109AF2B68E8C000150849 = {
 			isa = PBXGroup;
 			children = (
@@ -72,10 +93,10 @@
 				A05109DC2B68E9EA00150849 /* Extension */,
 				A05109DE2B68EA1100150849 /* Components */,
 				A05109E02B68EA3B00150849 /* Resources */,
+				A04C10862B69075F005A8F95 /* Network */,
 				A05109DB2B68E9E600150849 /* Model */,
 				A05109C92B68E8C300150849 /* Info.plist */,
 				A05109E42B68EAB000150849 /* .gitignore */,
-				A05109E62B68EB1000150849 /* APIKey.swift */,
 			);
 			path = MediaProject2;
 			sourceTree = "<group>";
@@ -84,6 +105,8 @@
 			isa = PBXGroup;
 			children = (
 				A05109E22B68EA9700150849 /* HomeViewController.swift */,
+				A05109EA2B68ED2E00150849 /* HomeTableViewCell.swift */,
+				A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -91,6 +114,7 @@
 		A05109DB2B68E9E600150849 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A04C108D2B693171005A8F95 /* TVModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,6 +129,7 @@
 		A05109DD2B68E9F400150849 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				A05109E82B68EC1F00150849 /* ConfigurableProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -112,6 +137,7 @@
 		A05109DE2B68EA1100150849 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				A04C10912B694073005A8F95 /* PosterImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,10 +250,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A05109EB2B68ED2E00150849 /* HomeTableViewCell.swift in Sources */,
 				A05109BC2B68E8C000150849 /* AppDelegate.swift in Sources */,
+				A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */,
 				A05109BE2B68E8C000150849 /* SceneDelegate.swift in Sources */,
 				A05109E72B68EB1000150849 /* APIKey.swift in Sources */,
+				A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */,
+				A04C108E2B693171005A8F95 /* TVModel.swift in Sources */,
 				A05109E32B68EA9700150849 /* HomeViewController.swift in Sources */,
+				A05109E92B68EC2000150849 /* ConfigurableProtocol.swift in Sources */,
+				A04C10922B694073005A8F95 /* PosterImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,7 +408,6 @@
 				INFOPLIST_FILE = MediaProject2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -409,7 +440,6 @@
 				INFOPLIST_FILE = MediaProject2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
