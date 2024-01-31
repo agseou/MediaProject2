@@ -8,34 +8,24 @@
 import UIKit
 import SnapKit
 
-class HomeTableViewCell: UITableViewCell {
+class HomeTableViewCell: BaseTableViewCell {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        configureHierarchy()
-        configureView()
-        configureContsraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-}
-
-extension HomeTableViewCell: ConfigurableProtocol {
-    func configureHierarchy() {
+    override func configureHierarchy() {
         contentView.addSubview(collectionView)
     }
     
-    func configureView() {
-        collectionView.backgroundColor = .brown
-    }
-    
-    func configureContsraints() {
+    override func configureLayout() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(contentView)
         }
@@ -52,5 +42,4 @@ extension HomeTableViewCell: ConfigurableProtocol {
         layout.scrollDirection = .horizontal
         return layout
     }
-    
 }

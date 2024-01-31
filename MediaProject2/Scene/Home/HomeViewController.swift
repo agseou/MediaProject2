@@ -9,19 +9,19 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class HomeViewController: UIViewController {
+class HomeViewController: BaseViewController {
     
     let tableView = UITableView()
     var imageList: [TVModel] = [TVModel(results: []),
                                 TVModel(results: []),
-                                TVModel(results: [])]
+                                TVModel(results: [])] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHierarchy()
-        configureView()
-        configureContsraints()
-        
         let group = DispatchGroup()
         
         group.enter()
@@ -43,16 +43,12 @@ class HomeViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-
-}
-
-// MARK: - configureVC
-extension HomeViewController: ConfigurableProtocol {
-    func configureHierarchy() {
+    
+    override func configureHierarchy() {
         view.addSubview(tableView)
     }
     
-    func configureView() {
+    override func configureView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
@@ -60,14 +56,14 @@ extension HomeViewController: ConfigurableProtocol {
         tableView.rowHeight = UIScreen.main.bounds.height / 5
     }
     
-    func configureContsraints() {
+    override func configureLayout() {
         tableView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
-    
-    
+
 }
+
 
 // MARK: - TableVIew
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -98,10 +94,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
+        
         let item = imageList[collectionView.tag].results[indexPath.item]
-        let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path ?? "")")
-        cell.posterCard.kf.setImage(with: url, placeholder: UIImage(systemName: "heart"))
-        collectionView.reloadData()
+        if let poster = item.poster {
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(poster)")
+            cell.posterCard.kf.setImage(with: url, placeholder: UIImage(systemName: "heart"))
+        }
         
         return cell
     }

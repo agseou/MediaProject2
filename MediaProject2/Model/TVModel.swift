@@ -15,29 +15,29 @@ struct TVModel: Decodable {
 }
 
 struct TV: Decodable {
-    let backdrop_path: String?
+    let backdrop: String?
     let id: Int
     let original_language: String
     let original_name: String
     let overview: String
     let popularity: Double
-    let poster_path: String?
-    let first_air_date: String
+    let poster: String?
+    let firstDate: String
     let name: String
     let vote_average: Double
     let vote_count: Int
     
-//    enum CodingKeys: String, CodingKey {
-//        case backdrop = "backdrop_path"
-//        case id
-//        case original_language
-//        case original_name
-//        case overview
-//        case popularity
-//        case poster = "poster_path"
-//        case firstDate = "first_air_date"
-//        case name
-//        case vote_average
-//        case vote_count
-//    }
+    enum CodingKeys: String, CodingKey {
+        case backdrop = "backdrop_path"
+        case id
+        case original_language
+        case original_name
+        case overview
+        case popularity
+        case poster = "poster_path"
+        case firstDate = "first_air_date"
+        case name
+        case vote_average
+        case vote_count
+    }
 }

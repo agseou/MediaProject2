@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PosterImageView: UIImageView {
+class PosterCardView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
