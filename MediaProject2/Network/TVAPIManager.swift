@@ -26,16 +26,15 @@ struct TVAPIManager {
     
     static let shared = TVAPIManager()
     
-    let header: HTTPHeaders = ["Authorization": APIKey.tmdbToken,
-                               "accept": "application/json"]
+    let header: HTTPHeaders = ["Authorization": APIKey.tmdbToken]
     
     func fetchTrendingTV(completionHandler: @escaping ((TVModel) -> Void)) {
         let url = TVURL.trend.constructURL()
-        print(url)
         
         AF.request(url, method: .get, headers: header).responseDecodable(of: TVModel.self) { response in
             switch response.result {
             case .success(let success):
+                dump(success)
                 completionHandler(success)
             case .failure(let failure):
                 print("fail", failure)

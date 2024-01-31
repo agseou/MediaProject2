@@ -22,19 +22,25 @@ class HomeViewController: UIViewController {
         configureView()
         configureContsraints()
         
+        let group = DispatchGroup()
+        
+        group.enter()
         TVAPIManager.shared.fetchTopRatingTV { TVModel in
             self.imageList[0] = TVModel
-            DispatchQueue.global().async {
-                TVAPIManager.shared.fetchPopularTV { TVModel in
-                    self.imageList[1] = TVModel
-                    DispatchQueue.global().async {
-                        TVAPIManager.shared.fetchTrendingTV { TVModel in
-                            self.imageList[2] = TVModel
-                        }
-                    }
-                }
-            }
-            
+            group.leave()
+        }
+        group.enter()
+        TVAPIManager.shared.fetchPopularTV { TVModel in
+            self.imageList[1] = TVModel
+            group.leave()
+        }
+        group.enter()
+        TVAPIManager.shared.fetchTrendingTV { TVModel in
+            self.imageList[2] = TVModel
+            group.leave()
+        }
+        group.notify(queue: .main){
+            self.tableView.reloadData()
         }
     }
 
@@ -77,6 +83,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
         
         cell.collectionView.tag = indexPath.row
+        cell.collectionView.reloadData()
         
         return cell
     }
@@ -92,10 +99,11 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         let item = imageList[collectionView.tag].results[indexPath.item]
-        let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.poster)")
+        let url = URL(string: "https://image.tmdb.org/t/p/w500\(item.poster_path ?? "")")
         cell.posterCard.kf.setImage(with: url, placeholder: UIImage(systemName: "heart"))
+        collectionView.reloadData()
         
-        return  cell
+        return cell
     }
     
 }
