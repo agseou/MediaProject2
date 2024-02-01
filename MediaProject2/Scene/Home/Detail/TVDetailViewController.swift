@@ -14,7 +14,7 @@ class TVDetailViewController: BaseViewController {
     
     var TVDetails: TVDetailModel = TVDetailModel(backdropPath: nil, id: nil, name: nil, numberOfSeasons: nil, originalLanguage: nil, originalName: nil, overview: nil, posterPath: nil, seasons: nil, status: nil)
     
-    var id: String = ""
+    var id: Int?
     let backDrop = UIImageView()
     let gradientLayer = CAGradientLayer()
         
@@ -26,12 +26,19 @@ class TVDetailViewController: BaseViewController {
         view.numberOfLines = 2
         return view
     }()
+    let overViewLabel: UILabel = {
+        let view = UILabel()
+        view.textColor = .white
+        view.font = .systemFont(ofSize: 16, weight: .light)
+        view.numberOfLines = 3
+        return view
+    }()
     let tavleView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TVAPIManager.shared.fetchDetailTV(id: self.id) { TVDetailModel in
+        TVAPIManager.shared.fetchDetailTV(api: .seriesDetail(id: self.id ?? 12345))  { TVDetailModel in
             self.TVDetails = TVDetailModel
             self.configureView()
         }
@@ -42,8 +49,7 @@ class TVDetailViewController: BaseViewController {
         backDrop.layer.addSublayer(gradientLayer)
         backDrop.addSubview(posterCard)
         backDrop.addSubview(titleLabel)
-        
-
+        backDrop.addSubview(overViewLabel)
     }
     
     override func configureView() {
@@ -51,9 +57,9 @@ class TVDetailViewController: BaseViewController {
         
         gradientLayer.frame = backDrop.bounds
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-        
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: -0.2)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.2)
+
         posterCard.backgroundColor = .blue
         
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.backdropPath ?? "")")
@@ -61,6 +67,7 @@ class TVDetailViewController: BaseViewController {
         let posterURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.posterPath ?? "")")
         self.posterCard.kf.setImage(with: posterURL)
         titleLabel.text = TVDetails.name
+        overViewLabel.text = TVDetails.overview
         
         
     }
@@ -71,7 +78,7 @@ class TVDetailViewController: BaseViewController {
             $0.height.equalTo(view.safeAreaLayoutGuide).multipliedBy(0.3)
         }
         posterCard.snp.makeConstraints {
-            $0.height.equalTo(backDrop.snp.height).multipliedBy(0.7)
+            $0.height.equalTo(backDrop.snp.height).multipliedBy(0.8)
             $0.leading.equalTo(backDrop.snp.leading).offset(20)
             $0.centerY.equalTo(backDrop)
             $0.width.equalTo(backDrop.snp.height).multipliedBy(0.46)
@@ -79,7 +86,12 @@ class TVDetailViewController: BaseViewController {
         titleLabel.snp.makeConstraints {
             $0.leading.equalTo(posterCard.snp.trailing).offset(20)
             $0.top.equalTo(backDrop).offset(30)
-            $0.trailing.equalTo(backDrop).offset(20)
+            $0.trailing.equalTo(backDrop).offset(-20)
+        }
+        overViewLabel.snp.makeConstraints {
+            $0.leading.equalTo(posterCard.snp.trailing).offset(20)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.trailing.equalTo(backDrop).offset(-20)
         }
     }
 }

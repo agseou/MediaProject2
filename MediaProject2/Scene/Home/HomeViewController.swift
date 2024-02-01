@@ -26,17 +26,17 @@ class HomeViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TVAPIManager.shared.fetchTopRatingTV { TVModel in
+        TVAPIManager.shared.fetchTV(api: .topLating) { TVModel in
             self.imageList[0] = TVModel
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.fetchPopularTV { TVModel in
+        TVAPIManager.shared.fetchTV(api: .popular) { TVModel in
             self.imageList[1] = TVModel
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.fetchTrendingTV { TVModel in
+        TVAPIManager.shared.fetchTV(api: .trend) { TVModel in
             self.imageList[2] = TVModel
             group.leave()
         }
@@ -109,7 +109,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC = TVDetailViewController()
-        nextVC.id = String(imageList[indexPath.section].results[indexPath.item].id)
+        nextVC.id = imageList[indexPath.section].results[indexPath.item].id
         navigationController?.pushViewController(nextVC, animated: true)
     }
     

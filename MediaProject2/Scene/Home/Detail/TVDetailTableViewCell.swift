@@ -8,6 +8,8 @@
 import UIKit
 
 class TVDetailTableViewCell: BaseTableViewCell {
+    
+    let collectionCell = UICollectionViewCell()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

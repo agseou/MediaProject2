@@ -16,6 +16,9 @@
 		A03CD9392B6AADBF009BC294 /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A03CD9362B6AADBF009BC294 /* GmarketSansMedium.otf */; };
 		A03CD93C2B6ACCC3009BC294 /* TVDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */; };
 		A03CD93E2B6ADB3F009BC294 /* TVDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */; };
+		A03CD9462B6B537B009BC294 /* CastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD9452B6B537B009BC294 /* CastCollectionViewCell.swift */; };
+		A03CD9482B6B556A009BC294 /* TVCreditModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD9472B6B556A009BC294 /* TVCreditModel.swift */; };
+		A03CD94C2B6B7086009BC294 /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD94B2B6B7086009BC294 /* TMDBAPI.swift */; };
 		A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C10872B69282A005A8F95 /* TVAPIManager.swift */; };
 		A04C108E2B693171005A8F95 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108D2B693171005A8F95 /* TVModel.swift */; };
 		A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */; };
@@ -44,6 +47,9 @@
 		A03CD9362B6AADBF009BC294 /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailModel.swift; sourceTree = "<group>"; };
 		A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailTableViewCell.swift; sourceTree = "<group>"; };
+		A03CD9452B6B537B009BC294 /* CastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastCollectionViewCell.swift; sourceTree = "<group>"; };
+		A03CD9472B6B556A009BC294 /* TVCreditModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVCreditModel.swift; sourceTree = "<group>"; };
+		A03CD94B2B6B7086009BC294 /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
 		A04C10872B69282A005A8F95 /* TVAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVAPIManager.swift; sourceTree = "<group>"; };
 		A04C108D2B693171005A8F95 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
 		A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -75,14 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A03CD9282B6A315A009BC294 /* Utility */ = {
+		A03CD9282B6A315A009BC294 /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				A03CD9292B6A3168009BC294 /* BaseViewController.swift */,
 				A03CD92D2B6A376A009BC294 /* BaseTableViewCell.swift */,
 				A03CD92F2B6A38FB009BC294 /* BaseCollectionViewCell.swift */,
 			);
-			path = Utility;
+			path = Base;
 			sourceTree = "<group>";
 		};
 		A03CD9312B6A3937009BC294 /* Detail */ = {
@@ -90,6 +96,7 @@
 			children = (
 				A03CD9322B6A3FEB009BC294 /* TVDetailViewController.swift */,
 				A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */,
+				A03CD9452B6B537B009BC294 /* CastCollectionViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				A05109E62B68EB1000150849 /* APIKey.swift */,
+				A03CD94B2B6B7086009BC294 /* TMDBAPI.swift */,
 				A04C10872B69282A005A8F95 /* TVAPIManager.swift */,
 			);
 			path = Network;
@@ -139,7 +147,7 @@
 				A05109DE2B68EA1100150849 /* Components */,
 				A05109E02B68EA3B00150849 /* Resources */,
 				A04C10862B69075F005A8F95 /* Network */,
-				A03CD9282B6A315A009BC294 /* Utility */,
+				A03CD9282B6A315A009BC294 /* Base */,
 				A05109DB2B68E9E600150849 /* Model */,
 				A05109C92B68E8C300150849 /* Info.plist */,
 				A05109E42B68EAB000150849 /* .gitignore */,
@@ -163,6 +171,7 @@
 			children = (
 				A04C108D2B693171005A8F95 /* TVModel.swift */,
 				A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */,
+				A03CD9472B6B556A009BC294 /* TVCreditModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,12 +315,15 @@
 				A03CD93C2B6ACCC3009BC294 /* TVDetailModel.swift in Sources */,
 				A03CD92A2B6A3168009BC294 /* BaseViewController.swift in Sources */,
 				A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */,
+				A03CD94C2B6B7086009BC294 /* TMDBAPI.swift in Sources */,
 				A03CD92E2B6A376A009BC294 /* BaseTableViewCell.swift in Sources */,
 				A05109BE2B68E8C000150849 /* SceneDelegate.swift in Sources */,
 				A05109E72B68EB1000150849 /* APIKey.swift in Sources */,
 				A03CD9332B6A3FEB009BC294 /* TVDetailViewController.swift in Sources */,
+				A03CD9462B6B537B009BC294 /* CastCollectionViewCell.swift in Sources */,
 				A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */,
 				A04C108E2B693171005A8F95 /* TVModel.swift in Sources */,
+				A03CD9482B6B556A009BC294 /* TVCreditModel.swift in Sources */,
 				A03CD93E2B6ADB3F009BC294 /* TVDetailTableViewCell.swift in Sources */,
 				A05109E32B68EA9700150849 /* HomeViewController.swift in Sources */,
 				A03CD9302B6A38FB009BC294 /* BaseCollectionViewCell.swift in Sources */,
