@@ -8,8 +8,8 @@
 import Foundation
 
 // MARK: - CreditModel
-struct CreditModel: Codable {
-    let cast, crew: [Cast]?
+struct TVCreditModel: Codable {
+    let cast: [Cast]?
     let id: Int?
 }
 
@@ -18,10 +18,21 @@ struct Cast: Codable {
     let name: String?
     let profilePath: String?
     let character: String?
-    let order: Int?
+    let order: Int
     let department: Department?
     let job: String?
 
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.name = try container.decodeIfPresent(String.self, forKey: .name) ?? "none"
+        self.profilePath = try container.decodeIfPresent(String.self, forKey: .profilePath)
+        self.character = try container.decodeIfPresent(String.self, forKey: .character)
+        self.order = try container.decodeIfPresent(Int.self, forKey: .order)!
+        self.department = try container.decodeIfPresent(Department.self, forKey: .department)
+        self.job = try container.decodeIfPresent(String.self, forKey: .job)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case name
         case profilePath = "profile_path"

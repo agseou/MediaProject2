@@ -42,4 +42,20 @@ struct TVAPIManager {
             }
         }
     }
+    
+    func fetchCreditTV(api: TMDBAPI, completionHandler: @escaping (([Cast]) -> Void)) {
+        AF.request(api.endpoint,
+                   method: api.method,
+                   parameters: api.parameter,
+                   encoding: URLEncoding(destination: .queryString),
+                   headers: api.header).responseDecodable(of: TVCreditModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                dump(success)
+                completionHandler(success.cast ?? [])
+            case .failure(let failure):
+                print("fail", failure)
+            }
+        }
+    }
 }
