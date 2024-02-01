@@ -11,6 +11,11 @@ import SnapKit
 class HomeTableViewCell: BaseTableViewCell {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 17)
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -22,20 +27,25 @@ class HomeTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
+        contentView.addSubview(titleLabel)
         contentView.addSubview(collectionView)
     }
     
     override func configureLayout() {
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+        titleLabel.snp.makeConstraints {
+            $0.leading.top.equalTo(contentView).inset(10)
+            $0.height.equalTo(28)
+        }
+        collectionView.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalTo(contentView)
+            $0.top.equalTo(titleLabel.snp.bottom)
         }
     }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width / 3.2
-        let height = UIScreen.main.bounds.height / 5
-        layout.itemSize = CGSize(width: width, height: height)
+        layout.itemSize = CGSize(width: width, height: width * 4/3)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = .init(top: 0, left: 0, bottom: 0, right: 0)

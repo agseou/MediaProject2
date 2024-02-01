@@ -12,6 +12,7 @@ import Kingfisher
 class HomeViewController: BaseViewController {
     
     let tableView = UITableView()
+    let titleList = ["Top Rating", "Popular", "Trend"]
     var imageList: [TVModel] = [TVModel(results: []),
                                 TVModel(results: []),
                                 TVModel(results: [])] {
@@ -46,14 +47,14 @@ class HomeViewController: BaseViewController {
     
     override func configureHierarchy() {
         view.addSubview(tableView)
+        navigationItem.title = "TV"
     }
     
     override func configureView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(HomeTableViewCell.self, forCellReuseIdentifier: "HomeTableViewCell")
-        
-        tableView.rowHeight = UIScreen.main.bounds.height / 5
+        tableView.rowHeight =  UIScreen.main.bounds.width * 0.5
     }
     
     override func configureLayout() {
@@ -79,6 +80,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
         
         cell.collectionView.tag = indexPath.row
+        cell.selectionStyle = .none
+        cell.titleLabel.text = titleList[indexPath.row]
         cell.collectionView.reloadData()
         
         return cell
@@ -104,8 +107,10 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
-}
-
-#Preview {
-    HomeViewController()
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = TVDetailViewController()
+        nextVC.id = String(imageList[indexPath.section].results[indexPath.item].id)
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
 }

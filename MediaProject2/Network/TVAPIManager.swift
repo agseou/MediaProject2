@@ -17,7 +17,6 @@ enum TVURL: String {
     case korLang = "?language=ko-KR"
     
     func constructURL() -> String {
-        print(TVURL.baseURL + self.rawValue + TVURL.korLang.rawValue)
         return TVURL.baseURL + self.rawValue + TVURL.korLang.rawValue
     }
 }
@@ -34,7 +33,6 @@ struct TVAPIManager {
         AF.request(url, method: .get, headers: header).responseDecodable(of: TVModel.self) { response in
             switch response.result {
             case .success(let success):
-                dump(success)
                 completionHandler(success)
             case .failure(let failure):
                 print("fail", failure)
@@ -67,6 +65,19 @@ struct TVAPIManager {
                 print("fail", failure)
             }
         }
-        
+    }
+    
+    func fetchDetailTV(id: String, completionHandler: @escaping ((TVDetailModel) -> Void)) {
+        let url = TVURL.baseURL + "tv/" + id + TVURL.korLang.rawValue
+        print(url)
+        AF.request(url, method: .get, headers: header).responseDecodable(of: TVDetailModel.self) { response in
+            switch response.result {
+            case .success(let success):
+                dump(success)
+                completionHandler(success)
+            case .failure(let failure):
+                print("fail", failure)
+            }
+        }
     }
 }

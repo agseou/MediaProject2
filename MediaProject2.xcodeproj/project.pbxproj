@@ -10,6 +10,12 @@
 		A03CD92A2B6A3168009BC294 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD9292B6A3168009BC294 /* BaseViewController.swift */; };
 		A03CD92E2B6A376A009BC294 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD92D2B6A376A009BC294 /* BaseTableViewCell.swift */; };
 		A03CD9302B6A38FB009BC294 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD92F2B6A38FB009BC294 /* BaseCollectionViewCell.swift */; };
+		A03CD9332B6A3FEB009BC294 /* TVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD9322B6A3FEB009BC294 /* TVDetailViewController.swift */; };
+		A03CD9372B6AADBF009BC294 /* GmarketSansLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A03CD9342B6AADBF009BC294 /* GmarketSansLight.otf */; };
+		A03CD9382B6AADBF009BC294 /* GmarketSansBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A03CD9352B6AADBF009BC294 /* GmarketSansBold.otf */; };
+		A03CD9392B6AADBF009BC294 /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A03CD9362B6AADBF009BC294 /* GmarketSansMedium.otf */; };
+		A03CD93C2B6ACCC3009BC294 /* TVDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */; };
+		A03CD93E2B6ADB3F009BC294 /* TVDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */; };
 		A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C10872B69282A005A8F95 /* TVAPIManager.swift */; };
 		A04C108E2B693171005A8F95 /* TVModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108D2B693171005A8F95 /* TVModel.swift */; };
 		A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */; };
@@ -32,6 +38,12 @@
 		A03CD9292B6A3168009BC294 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A03CD92D2B6A376A009BC294 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		A03CD92F2B6A38FB009BC294 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		A03CD9322B6A3FEB009BC294 /* TVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailViewController.swift; sourceTree = "<group>"; };
+		A03CD9342B6AADBF009BC294 /* GmarketSansLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansLight.otf; sourceTree = "<group>"; };
+		A03CD9352B6AADBF009BC294 /* GmarketSansBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansBold.otf; sourceTree = "<group>"; };
+		A03CD9362B6AADBF009BC294 /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
+		A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailModel.swift; sourceTree = "<group>"; };
+		A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailTableViewCell.swift; sourceTree = "<group>"; };
 		A04C10872B69282A005A8F95 /* TVAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVAPIManager.swift; sourceTree = "<group>"; };
 		A04C108D2B693171005A8F95 /* TVModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVModel.swift; sourceTree = "<group>"; };
 		A04C108F2B693A62005A8F95 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -76,8 +88,20 @@
 		A03CD9312B6A3937009BC294 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				A03CD9322B6A3FEB009BC294 /* TVDetailViewController.swift */,
+				A03CD93D2B6ADB3F009BC294 /* TVDetailTableViewCell.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		A03CD93A2B6AADC8009BC294 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A03CD9352B6AADBF009BC294 /* GmarketSansBold.otf */,
+				A03CD9342B6AADBF009BC294 /* GmarketSansLight.otf */,
+				A03CD9362B6AADBF009BC294 /* GmarketSansMedium.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A04C10862B69075F005A8F95 /* Network */ = {
@@ -138,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				A04C108D2B693171005A8F95 /* TVModel.swift */,
+				A03CD93B2B6ACCC3009BC294 /* TVDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -177,6 +202,7 @@
 		A05109E02B68EA3B00150849 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A03CD93A2B6AADC8009BC294 /* Fonts */,
 				A05109C42B68E8C300150849 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -259,9 +285,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A03CD9382B6AADBF009BC294 /* GmarketSansBold.otf in Resources */,
 				A05109C82B68E8C300150849 /* LaunchScreen.storyboard in Resources */,
 				A05109E52B68EAB000150849 /* .gitignore in Resources */,
+				A03CD9392B6AADBF009BC294 /* GmarketSansMedium.otf in Resources */,
 				A05109C52B68E8C300150849 /* Assets.xcassets in Resources */,
+				A03CD9372B6AADBF009BC294 /* GmarketSansLight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,13 +303,16 @@
 			files = (
 				A05109EB2B68ED2E00150849 /* HomeTableViewCell.swift in Sources */,
 				A05109BC2B68E8C000150849 /* AppDelegate.swift in Sources */,
+				A03CD93C2B6ACCC3009BC294 /* TVDetailModel.swift in Sources */,
 				A03CD92A2B6A3168009BC294 /* BaseViewController.swift in Sources */,
 				A04C10882B69282A005A8F95 /* TVAPIManager.swift in Sources */,
 				A03CD92E2B6A376A009BC294 /* BaseTableViewCell.swift in Sources */,
 				A05109BE2B68E8C000150849 /* SceneDelegate.swift in Sources */,
 				A05109E72B68EB1000150849 /* APIKey.swift in Sources */,
+				A03CD9332B6A3FEB009BC294 /* TVDetailViewController.swift in Sources */,
 				A04C10902B693A62005A8F95 /* HomeCollectionViewCell.swift in Sources */,
 				A04C108E2B693171005A8F95 /* TVModel.swift in Sources */,
+				A03CD93E2B6ADB3F009BC294 /* TVDetailTableViewCell.swift in Sources */,
 				A05109E32B68EA9700150849 /* HomeViewController.swift in Sources */,
 				A03CD9302B6A38FB009BC294 /* BaseCollectionViewCell.swift in Sources */,
 				A04C10922B694073005A8F95 /* PosterCardView.swift in Sources */,
