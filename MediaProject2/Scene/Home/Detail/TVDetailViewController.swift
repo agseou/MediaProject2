@@ -16,6 +16,8 @@ class TVDetailViewController: BaseViewController {
     
     var id: String = ""
     let backDrop = UIImageView()
+    let gradientLayer = CAGradientLayer()
+        
     let posterCard = PosterCardView(frame: .zero)
     let titleLabel: UILabel = {
         let view = UILabel()
@@ -37,12 +39,21 @@ class TVDetailViewController: BaseViewController {
    
     override func configureHierarchy() {
         view.addSubview(backDrop)
+        backDrop.layer.addSublayer(gradientLayer)
         backDrop.addSubview(posterCard)
         backDrop.addSubview(titleLabel)
+        
+
     }
     
     override func configureView() {
         backDrop.backgroundColor = .orange
+        
+        gradientLayer.frame = backDrop.bounds
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
+        
         posterCard.backgroundColor = .blue
         
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.backdropPath ?? "")")
@@ -50,6 +61,8 @@ class TVDetailViewController: BaseViewController {
         let posterURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.posterPath ?? "")")
         self.posterCard.kf.setImage(with: posterURL)
         titleLabel.text = TVDetails.name
+        
+        
     }
     
     override func configureLayout() {
