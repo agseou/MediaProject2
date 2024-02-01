@@ -11,28 +11,27 @@ import Kingfisher
 
 class TVDetailViewController: BaseViewController {
 
+    
+    var TVDetails: TVDetailModel = TVDetailModel(backdropPath: nil, id: nil, name: nil, numberOfSeasons: nil, originalLanguage: nil, originalName: nil, overview: nil, posterPath: nil, seasons: nil, status: nil)
+    
     var id: String = ""
     let backDrop = UIImageView()
     let posterCard = PosterCardView(frame: .zero)
     let titleLabel: UILabel = {
         let view = UILabel()
         view.textColor = .white
-        view.font = UIFont(name: "GmarketSansBold", size: 17)
+        view.font = UIFont(name: "GmarketSansBold", size: 24)
         view.numberOfLines = 2
         return view
     }()
-    var seriesList: TVDetailModel = TVDetailModel(backdropPath: nil, id: nil, name: nil, numberOfSeasons: nil, originalLanguage: nil, originalName: nil, overview: nil, posterPath: nil, seasons: nil, status: nil)
-    
-    
-    
     let tavleView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         TVAPIManager.shared.fetchDetailTV(id: self.id) { TVDetailModel in
-            let url = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetailModel.backdropPath ?? "")")
-            self.backDrop.kf.setImage(with: url)
+            self.TVDetails = TVDetailModel
+            self.configureView()
         }
     }
    
@@ -46,6 +45,11 @@ class TVDetailViewController: BaseViewController {
         backDrop.backgroundColor = .orange
         posterCard.backgroundColor = .blue
         
+        let backdropURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.backdropPath ?? "")")
+        self.backDrop.kf.setImage(with: backdropURL)
+        let posterURL = URL(string: "https://image.tmdb.org/t/p/w500\(TVDetails.posterPath ?? "")")
+        self.posterCard.kf.setImage(with: posterURL)
+        titleLabel.text = TVDetails.name
     }
     
     override func configureLayout() {
