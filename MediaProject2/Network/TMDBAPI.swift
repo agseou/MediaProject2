@@ -32,7 +32,7 @@ enum TMDBAPI {
         case .seriesDetail(let id):
             return URL(string: baseURL + "tv/\(id)")!
         case .recommendation(let id):
-            return URL(string: baseURL + "/tv/\(id)/recommendations")!
+            return URL(string: baseURL + "tv/\(id)/recommendations")!
         case .credits(let id):
             return URL(string: baseURL + "tv/\(id)/credits")!
         }

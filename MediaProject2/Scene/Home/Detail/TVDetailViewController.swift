@@ -34,12 +34,12 @@ class TVDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TVAPIManager.shared.fetchDetailTV(api: .seriesDetail(id: self.id ?? 12345))  { TVDetailModel in
-            self.TVDetails = TVDetailModel
+        TVAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
+            self.TVDetails = type
             self.tableView.reloadData()
         }
-        TVAPIManager.shared.fetchCreditTV(api: .credits(id:self.id ?? 12345)) { cast in
-            self.castList = cast
+        TVAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
+            self.castList = type.cast ?? []
             self.tableView.reloadData()
         }
     }

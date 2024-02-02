@@ -12,47 +12,16 @@ struct TVAPIManager {
     
     static let shared = TVAPIManager()
     
-    func fetchTV(api: TMDBAPI, completionHandler: @escaping ((TVModel) -> Void)) {
+    func request<T: Decodable>(type: T.Type, api: TMDBAPI, completionHandler: @escaping ((T) -> Void)) {
         
-        AF.request(api.endpoint, 
-                   method: api.method,
-                   parameters: api.parameter,
-                   headers: api.header).responseDecodable(of: TVModel.self) { response in
-            switch response.result {
-            case .success(let success):
-                completionHandler(success)
-            case .failure(let failure):
-                print("fail", failure)
-            }
-        }
-    }
-    
-    func fetchDetailTV(api: TMDBAPI, completionHandler: @escaping ((TVDetailModel) -> Void)) {
-        AF.request(api.endpoint, 
-                   method: api.method,
-                   parameters: api.parameter,
-                   encoding: URLEncoding(destination: .queryString),
-                   headers: api.header).responseDecodable(of: TVDetailModel.self) { response in
-            switch response.result {
-            case .success(let success):
-                dump(success)
-                completionHandler(success)
-            case .failure(let failure):
-                print("fail", failure)
-            }
-        }
-    }
-    
-    func fetchCreditTV(api: TMDBAPI, completionHandler: @escaping (([Cast]) -> Void)) {
         AF.request(api.endpoint,
                    method: api.method,
                    parameters: api.parameter,
                    encoding: URLEncoding(destination: .queryString),
-                   headers: api.header).responseDecodable(of: TVCreditModel.self) { response in
+                   headers: api.header).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let success):
-                dump(success)
-                completionHandler(success.cast ?? [])
+                completionHandler(success)
             case .failure(let failure):
                 print("fail", failure)
             }

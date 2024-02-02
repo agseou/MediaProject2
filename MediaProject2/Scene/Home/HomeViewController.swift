@@ -26,18 +26,18 @@ class HomeViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TVAPIManager.shared.fetchTV(api: .topLating) { TVModel in
-            self.imageList[0] = TVModel
+        TVAPIManager.shared.request(type: TVModel.self, api: .topLating) { type in
+            self.imageList[0] = type
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.fetchTV(api: .popular) { TVModel in
-            self.imageList[1] = TVModel
+        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { type in
+            self.imageList[1] = type
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.fetchTV(api: .trend) { TVModel in
-            self.imageList[2] = TVModel
+        TVAPIManager.shared.request(type: TVModel.self, api: .trend) { type in
+            self.imageList[2] = type
             group.leave()
         }
         group.notify(queue: .main){
