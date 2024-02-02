@@ -14,6 +14,7 @@ enum TMDBAPI {
     case topLating
     case popular
     case seriesDetail(id: Int)
+    case recommendation(id: Int)
     case credits(id: Int)
     
     var baseURL: String {
@@ -30,6 +31,8 @@ enum TMDBAPI {
             return URL(string: baseURL + "tv/popular")!
         case .seriesDetail(let id):
             return URL(string: baseURL + "tv/\(id)")!
+        case .recommendation(let id):
+            return URL(string: baseURL + "/tv/\(id)/recommendations")!
         case .credits(let id):
             return URL(string: baseURL + "tv/\(id)/credits")!
         }
@@ -52,6 +55,8 @@ enum TMDBAPI {
         case .popular:
             ["language":"ko-KR"]
         case .seriesDetail(let id):
+            ["language":"ko-KR", "id": id]
+        case .recommendation(let id):
             ["language":"ko-KR", "id": id]
         case .credits(let id):
             ["language":"ko-KR", "id": id]
