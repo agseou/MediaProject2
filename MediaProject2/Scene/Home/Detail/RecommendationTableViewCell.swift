@@ -10,10 +10,35 @@ import UIKit
 class RecommendationTableViewCell: BaseTableViewCell {
 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 17)
+        return label
+    }()
+    
+    override func configureHierarchy() {
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(collectionView)
+    }
+    
+    override func configureCell() {
+        titleLabel.text = "비슷한 컨텐츠"
+    }
+    
+    override func configureLayout() {
+        titleLabel.snp.makeConstraints {
+            $0.leading.top.equalTo(contentView).inset(10)
+            $0.height.equalTo(28)
+        }
+        collectionView.snp.makeConstraints {
+            $0.horizontalEdges.bottom.equalTo(contentView)
+            $0.top.equalTo(titleLabel.snp.bottom)
+        }
+    }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 4.3
+        let width = UIScreen.main.bounds.width / 2.3
         layout.itemSize = CGSize(width: width, height: width * 4/3)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0

@@ -24,13 +24,18 @@ class CastCollectionViewCell: BaseCollectionViewCell {
     
     override func configureCell() {
         baseView.backgroundColor = .white
+        baseView.layer.cornerRadius = 5
+        baseView.clipsToBounds = true
+        
         castImage.contentMode = .scaleAspectFill
         castImage.clipsToBounds = true
         
         characterLabel.textColor = .black
-        characterLabel.font = .systemFont(ofSize: 13)
+        characterLabel.font = .systemFont(ofSize: 12)
+        characterLabel.textAlignment = .center
         nameLabel.textColor = .black
-        nameLabel.font = .systemFont(ofSize: 13)
+        nameLabel.font = .systemFont(ofSize: 12)
+        nameLabel.textAlignment = .center
     }
     
     override func configureLayout() {
@@ -43,7 +48,7 @@ class CastCollectionViewCell: BaseCollectionViewCell {
         }
         characterLabel.snp.makeConstraints {
             $0.horizontalEdges.equalTo(baseView)
-            $0.top.equalTo(castImage.snp.bottom)
+            $0.top.equalTo(castImage.snp.bottom).offset(4)
         }
         nameLabel.snp.makeConstraints {
             $0.horizontalEdges.equalTo(baseView)

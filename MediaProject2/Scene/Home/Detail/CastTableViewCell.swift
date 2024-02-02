@@ -22,7 +22,7 @@ class CastTableViewCell: BaseTableViewCell {
     }
     
     override func configureCell() {
-        titleLabel.text = "Title"
+        titleLabel.text = "Cast"
     }
     
     override func configureLayout() {
@@ -38,7 +38,7 @@ class CastTableViewCell: BaseTableViewCell {
 
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width / 4.3
+        let width = UIScreen.main.bounds.width / 4.1
         layout.itemSize = CGSize(width: width, height: width * 4/3)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
