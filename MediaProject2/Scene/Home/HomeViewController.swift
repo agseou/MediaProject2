@@ -11,6 +11,7 @@ import Kingfisher
 
 class HomeViewController: BaseViewController {
     
+    //let collectionView = UICollectionView(frame: .zero, collectionViewLayout: T##UICollectionViewLayout)
     let tableView = UITableView()
     let titleList = ["Top Rating", "Popular", "Trend"]
     var imageList: [TVModel] = [TVModel(results: []),
@@ -109,7 +110,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC = TVDetailViewController()
-        nextVC.id = imageList[indexPath.section].results[indexPath.item].id
+        nextVC.id = imageList[collectionView.tag].results[indexPath.item].id
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
