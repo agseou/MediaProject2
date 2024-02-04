@@ -10,20 +10,6 @@ import SnapKit
 import Kingfisher
 
 class TVDetailViewController: BaseViewController {
-
-//    enum DetailType {
-//        case header
-//        case cast
-//        
-//        var contenst: Any {
-//            switch self {
-//            case .header:
-//                return TVDetails
-//            case .cast:
-//                return castList
-//            }
-//        }
-//    }
     
     var TVDetails: TVDetailModel = TVDetailModel(backdropPath: nil, id: nil, name: nil, numberOfSeasons: nil, originalLanguage: nil, originalName: nil, overview: nil, posterPath: nil, seasons: nil, status: nil)
     lazy var castList: [Cast] = []
@@ -34,17 +20,23 @@ class TVDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let group = DispatchGroup()
+        group.enter()
         TVAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
             self.TVDetails = type
-            self.tableView.reloadData()
+            group.leave()
         }
+        group.enter()
         TVAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
             self.castList = type.cast ?? []
-            self.tableView.reloadData()
+            group.leave()
         }
+        group.enter()
         TVAPIManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { type in
             self.recommendList = type.results
+            group.leave()
+        }
+        group.notify(queue: .main){
             self.tableView.reloadData()
         }
     }

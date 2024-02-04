@@ -11,7 +11,6 @@ import Kingfisher
 
 class HomeViewController: BaseViewController {
     
-    //let collectionView = UICollectionView(frame: .zero, collectionViewLayout: T##UICollectionViewLayout)
     let tableView = UITableView()
     let titleList = ["Top Rating", "Popular", "Trend"]
     var imageList: [TVModel] = [TVModel(results: []),
