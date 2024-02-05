@@ -8,9 +8,9 @@
 import Foundation
 import Alamofire
 
-struct TVAPIManager {
+struct TMDBAPIManager {
     
-    static let shared = TVAPIManager()
+    static let shared = TMDBAPIManager()
     
     func request<T: Decodable>(type: T.Type, api: TMDBAPI, completionHandler: @escaping ((T) -> Void)) {
         

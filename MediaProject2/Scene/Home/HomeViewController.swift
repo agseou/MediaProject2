@@ -26,17 +26,17 @@ class HomeViewController: BaseViewController {
         let group = DispatchGroup()
         
         group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .topLating) { type in
+        TMDBAPIManager.shared.request(type: TVModel.self, api: .topLating) { type in
             self.imageList[0] = type
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .popular) { type in
+        TMDBAPIManager.shared.request(type: TVModel.self, api: .popular) { type in
             self.imageList[1] = type
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .trend) { type in
+        TMDBAPIManager.shared.request(type: TVModel.self, api: .trend) { type in
             self.imageList[2] = type
             group.leave()
         }

@@ -22,17 +22,17 @@ class TVDetailViewController: BaseViewController {
         super.viewDidLoad()
         let group = DispatchGroup()
         group.enter()
-        TVAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
+        TMDBAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
             self.TVDetails = type
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
+        TMDBAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
             self.castList = type.cast ?? []
             group.leave()
         }
         group.enter()
-        TVAPIManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { type in
+        TMDBAPIManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { type in
             self.recommendList = type.results
             group.leave()
         }
