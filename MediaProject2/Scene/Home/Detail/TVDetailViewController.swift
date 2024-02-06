@@ -21,19 +21,54 @@ class TVDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let group = DispatchGroup()
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
+//            self.TVDetails = type
+//            group.leave()
+//        }
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
+//            self.castList = type.cast ?? []
+//            group.leave()
+//        }
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { type in
+//            self.recommendList = type.results
+//            group.leave()
+//        }
+        
+        // 왜???
+        // URL 맞음
+        // 헤더 잘줌
         group.enter()
-        TMDBAPIManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { type in
-            self.TVDetails = type
+        TMDBSessionManager.shared.request(type: TVDetailModel.self, api: .seriesDetail(id: self.id ?? 12345)) { TVDetail, error in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let TVDetail = TVDetail else { return }
+                self.TVDetails = TVDetail
+            } else {
+                // error 분기처리
+                
+            }
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.request(type: TVCreditModel.self , api: .credits(id: self.id ?? 12345)) { type in
-            self.castList = type.cast ?? []
+        TMDBSessionManager.shared.request(type: TVCreditModel.self, api: .credits(id: self.id ?? 12345)) { TVCredit, error in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let TVCredit = TVCredit else { return }
+                self.castList = TVCredit.cast ?? []
+            } else {
+                // error 분기처리
+            }
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { type in
-            self.recommendList = type.results
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .recommendation(id: self.id ?? 12345)) { TVModel, error in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let TVModel = TVModel else { return }
+                self.recommendList = TVModel.results
+            } else {
+                // error 분기처리
+            }
             group.leave()
         }
         group.notify(queue: .main){

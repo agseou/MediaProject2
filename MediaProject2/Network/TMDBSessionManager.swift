@@ -23,7 +23,7 @@ class TMDBSessionManager {
         
         var urlComponents = URLComponents(url: api.endpoint, resolvingAgainstBaseURL: true)
         
-        if let queryParams = api.parameter as? [String: Any] {
+        if let queryParams = api.parameter as? [String: String] {
             var queryItems = [URLQueryItem]()
             for (key, value) in queryParams {
                 queryItems.append(URLQueryItem(name: key, value: "\(value)"))
@@ -36,10 +36,18 @@ class TMDBSessionManager {
         }
         
         var urlRequest = URLRequest(url: url)
-        urlRequest.allHTTPHeaderFields = api.header.dictionary
+        urlRequest.httpMethod = "GET"
+        urlRequest.addValue(APIKey.tmdbToken, forHTTPHeaderField: "Authorization")
+        
+        print(urlRequest)
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             DispatchQueue.main.async {
+                
+                print("DATA: ", data)
+                print("RESPONSE: ", response)
+                print("ERROR: ", error)
+                
                 guard error == nil else {
                     print("네트워크 통신 실패")
                     completionHandler(nil, .failedRequest)
@@ -53,13 +61,15 @@ class TMDBSessionManager {
                     return
                 }
                 
+                print(String(data: data, encoding: .utf8))
+                
                 guard let response = response as? HTTPURLResponse else {
                     print("통신은 성공했지만, 응답(ex. 상태코드)이 오지 않음")
                     completionHandler(nil, .invalidResponse)
                     return
                 }
                 
-                guard (200...299).contains(response.statusCode) else {
+                guard response.statusCode == 200  else {
                     print("통신은 성공했지만, 올바른 값이 오지 않은 상태!!!!")
                     completionHandler(nil, .invalidData)
                     return

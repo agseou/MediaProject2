@@ -24,20 +24,50 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let group = DispatchGroup()
-        
+//        
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVModel.self, api: .topLating) { type in
+//            self.imageList[0] = type
+//            group.leave()
+//        }
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVModel.self, api: .popular) { type in
+//            self.imageList[1] = type
+//            group.leave()
+//        }
+//        group.enter()
+//        TMDBAPIManager.shared.request(type: TVModel.self, api: .trend) { type in
+//            self.imageList[2] = type
+//            group.leave()
+//        }
         group.enter()
-        TMDBAPIManager.shared.request(type: TVModel.self, api: .topLating) { type in
-            self.imageList[0] = type
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .topLating) { type, error  in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let type = type else { return }
+                self.imageList[0] = type
+            } else {
+                // error 분기처리
+            }
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.request(type: TVModel.self, api: .popular) { type in
-            self.imageList[1] = type
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .popular) {  type, error  in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let type = type else { return }
+                self.imageList[1] = type
+            } else {
+                // error 분기처리
+            }
             group.leave()
         }
         group.enter()
-        TMDBAPIManager.shared.request(type: TVModel.self, api: .trend) { type in
-            self.imageList[2] = type
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .trend) {  type, error  in
+            if error == nil { // error가 nil이면 네트워크 통신 성공
+                guard let type = type else { return }
+                self.imageList[2] = type
+            } else {
+                // error 분기처리
+            }
             group.leave()
         }
         group.notify(queue: .main){
