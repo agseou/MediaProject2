@@ -22,7 +22,7 @@ struct TV: Decodable {
     let overview: String
     let popularity: Double
     let poster: String?
-    let firstDate: String
+    let firstDate: String?
     let name: String
     let vote_average: Double
     let vote_count: Int

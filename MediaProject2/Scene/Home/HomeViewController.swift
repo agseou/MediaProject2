@@ -51,9 +51,11 @@ class HomeViewController: BaseViewController {
             group.leave()
         }
         group.enter()
-        TMDBSessionManager.shared.request(type: TVModel.self, api: .popular) {  type, error  in
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .popular) { type, error  in
             if error == nil { // error가 nil이면 네트워크 통신 성공
+                print("123")
                 guard let type = type else { return }
+                print("456")
                 self.imageList[1] = type
             } else {
                 // error 분기처리
@@ -61,7 +63,7 @@ class HomeViewController: BaseViewController {
             group.leave()
         }
         group.enter()
-        TMDBSessionManager.shared.request(type: TVModel.self, api: .trend) {  type, error  in
+        TMDBSessionManager.shared.request(type: TVModel.self, api: .trend) { type, error  in
             if error == nil { // error가 nil이면 네트워크 통신 성공
                 guard let type = type else { return }
                 self.imageList[2] = type
